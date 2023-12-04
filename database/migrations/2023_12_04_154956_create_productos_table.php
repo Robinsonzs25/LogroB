@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('precio');
             $table->integer('cantidadStock');
             $table->boolean('estado')->default(true);
-            $table->unsignedBigInteger('categoria_id');
+            $table->foreignId('categoria_id')->constrained('categorias');
             });
     }
 

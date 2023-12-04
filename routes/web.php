@@ -16,6 +16,9 @@ use App\Http\Controllers\CategoriaController;
 */
 
 Route::get('/', [ProductoController::class, 'index']);
+Route::post('/producto', [ProductoController::class, 'Agregar']);
+Route::get('/producto/categoria/{categoriaId}', [ProductoController::class, 'filtrar']);
+Route::delete('/producto/{id}',[AutorController::class,'eliminar']);
 
 
 Route::get('/cat', [CategoriaController::class, 'index']);

@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>:: Gestion de Productos ::</h1>
-    <form action="{{url('libro') }}" method="post">
+    <form action="{{url('producto') }}" method="post">
         @csrf
             <div>
                 <label for="">Nombre del producto</label>
@@ -29,7 +29,7 @@
                 <label for="">Categoria</label>
                 <select name="categoria">
                     @foreach($productoss as $item)
-                    <option value="{{$item->id}}">{{$item ->id}}</option>
+                    <option value="{{$item->id}}">{{$item ->categoria}}</option>
                     @endforeach
                 </select>
             </div>
@@ -61,7 +61,7 @@
                 <td>{{$item->categoria}}</td>
                 <td>
                   <div>
-                    <form action="{{url ('autor', $item->id)}}" method="post">
+                    <form action="{{url ('producto', $item->id)}}" method="post">
                       @method('delete')
                       @csrf
                       <button type="submit" >Eliminar</button>
@@ -72,6 +72,7 @@
             @endforeach
     </table> 
     </form>
+
     <br>
     <a href="{{url('cat')}}">Gestionar Categoria</a>
 </body>
