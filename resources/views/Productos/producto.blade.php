@@ -29,7 +29,7 @@
                 <label for="">Categoria</label>
                 <select name="categoria">
                     @foreach($productoss as $item)
-                    <option value="{{$item->id}}">{{$item ->name}}</option>
+                    <option value="{{$item->id}}">{{$item ->id}}</option>
                     @endforeach
                 </select>
             </div>
@@ -37,6 +37,42 @@
             <div>
                 <button type="submit">Registrar</button>
             </div> 
+<br><br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>NombreProducto</th>
+                <th>FechaVencimiento</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Categoria</th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($productoss as $item)
+            <tr>
+                <td>{{$item->id}}</td>
+                <td>{{$item->nombreproducto}}</td>
+                <td>{{$item->fechavencimiento}}</td>
+                <td>{{$item->precio}}</td>
+                <td>{{$item->cantidadStock}}</td>
+                <td>{{$item->categoria}}</td>
+                <td>
+                  <div>
+                    <form action="{{url ('autor', $item->id)}}" method="post">
+                      @method('delete')
+                      @csrf
+                      <button type="submit" >Eliminar</button>
+                    </form>
+                  </div>
+                </td>
+            </tr>
+            @endforeach
+    </table> 
     </form>
+    <br>
+    <a href="{{url('cat')}}">Gestionar Categoria</a>
 </body>
 </html>

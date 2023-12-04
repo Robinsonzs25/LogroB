@@ -21,6 +21,13 @@ class ProductoController extends Controller
 
     public function index(){
         $productoss = Producto::where('estado', true)->get();
+
+        $productoss = DB::table('libros')
+        ->join('categorias', 'producto.categoria_id', '=', 'categorias.id')
+        ->select('productos.id','productos.nombre','productos.fecha','productos.precio','productos.cantidad','categorias.nombre')
+        ->where('productos.estado', true)
+        ->get();
+        
         return view('Productos.producto', compact('productoss'));
     }
 

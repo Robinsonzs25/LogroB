@@ -16,3 +16,7 @@ use App\Http\Controllers\CategoriaController;
 */
 
 Route::get('/', [ProductoController::class, 'index']);
+
+
+Route::get('/cat', [CategoriaController::class, 'index']);
+Route::post('/cate', [CategoriaController::class, 'registro']);
